@@ -19,6 +19,9 @@ export class BookingPageComponent implements OnInit {
   baseCost: number;
   ACCost:number;
   sleeperCost:number;
+  sleeperStatus:string;
+  ACStatus:string;
+  numSeats: number;
 
   constructor() {
     this.tempBill = 0;
@@ -26,6 +29,9 @@ export class BookingPageComponent implements OnInit {
     this.baseCost = 0;
     this.ACCost = 0;
     this.sleeperCost = 0;
+    this.sleeperStatus = "Non Sleeper";
+    this.ACStatus = "Non AC";
+    this.numSeats = 1;
    }
 
   
@@ -159,7 +165,9 @@ export class BookingPageComponent implements OnInit {
     else{
       this.ACCost = 0;
     }
-    this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+    if(this.baseCost!=0){
+      this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+    }
   }
 
   onChangeSeats(details: any){
@@ -175,7 +183,9 @@ export class BookingPageComponent implements OnInit {
     else{
       this.sleeperCost = 0;
     }
-    this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+    if(this.baseCost!=0){
+      this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+    }
   }
 
 }
