@@ -1,0 +1,28 @@
+<div>
+    <h1 class="p-1 text-primary"><i><b>Bus Reservation</b></i></h1>
+</div>
+
+<div class="container w-50 mt-5">
+
+    <form [formGroup]="login_form" (ngSubmit)="onSubmit()" class="form-control" id="loginForm">
+
+        <h1>Login Form</h1>
+
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input class="form-control" type="email" name="email" formControlName="email" placeholder="Enter Email">
+        </div>
+        
+        <div class="form-group">
+            <label for="pass" class="form-label">Password</label>
+            <input class="form-control" type="text" name="pass" formControlName="pass" placeholder="Enter Password">
+        </div>
+
+        <div class="form-group mt-2">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        <div style="text-align:right;"><a href="#">New User? Create an account</a></div>
+        
+    </form>
+
+</div>
