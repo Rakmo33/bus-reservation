@@ -33,10 +33,19 @@ export class BookingPageComponent implements OnInit {
   }
 
   onSubmit(contactForm1: any) {
+
+    if(contactForm1.value.sourcecity == "" || contactForm1.value.destcity == ""){
+      return;
+    }
+
+    if(contactForm1.value.sourcecity == contactForm1.value.destcity){
+      alert("Select separate Source and Destination");
+      return;
+    }
    
     var ticketID = `Ticket${Math.floor(Math.random() * 1000)}`;
 
-    var finalAmount = this.calculateBill(contactForm1);
+    var finalAmount = this.tempBill;//this.calculateBill(contactForm1);
 
     var newTicket: any = {
       "ticketID": ticketID,
@@ -51,7 +60,7 @@ export class BookingPageComponent implements OnInit {
     };
 
     
-    localStorage.setItem("newTicket", newTicket);
+    localStorage.setItem("newTicket", JSON.stringify(newTicket));
     alert("Ticket booked successfully "+ finalAmount);
   }
 
@@ -100,45 +109,69 @@ export class BookingPageComponent implements OnInit {
     if(details.value.sourcecity == "" || details.value.destcity == ""){
       return;
     }
+
+    if(details.value.sourcecity == details.value.destcity){
+      alert("Select separate Source and Destination");
+      return;
+    }
+
+    console.log("Got src city:" + details.value.sourcecity);
+    console.log("Got src city:" + details.value.destcity);
     switch(details.value.sourcecity){
       case "Pune":
-        this.tempBill = this.tempBill + details.value.seats * mapPune.get(details.value.destcity)!;  break;
+        //this.tempBill = this.tempBill +  this.seatsNumber * mapPune.get(details.value.destcity)!;  
+        this.baseCost = mapPune.get(details.value.destcity)!;
+        this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+        break;
       case "Mumbai":
-        this.tempBill = this.tempBill + details.value.seats * mapMumbai.get(details.value.destcity)!;  break;
+        //this.tempBill = this.tempBill +  this.seatsNumber * mapMumbai.get(details.value.destcity)!; 
+        this.baseCost = mapMumbai.get(details.value.destcity)!;
+        this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+        break;
       case "Nagpur":
-        this.tempBill = this.tempBill + details.value.seats * mapNagpur.get(details.value.destcity)!;  break;
+        //this.tempBill = this.tempBill +  this.seatsNumber * mapNagpur.get(details.value.destcity)!;  
+        this.baseCost = mapNagpur.get(details.value.destcity)!;
+        this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+        break;
       case "Bengaluru":
-        this.tempBill = this.tempBill + details.value.seats * mapBengaluru.get(details.value.destcity)!;  break; 
+        //this.tempBill = this.tempBill +  this.seatsNumber * mapBengaluru.get(details.value.destcity)!;  
+        this.baseCost = mapBengaluru.get(details.value.destcity)!;
+        this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+        break; 
       case "Kolkata":
-        this.tempBill = this.tempBill + details.value.seats * mapKolkata.get(details.value.destcity)!;  break;  
+        //this.tempBill = this.tempBill +  this.seatsNumber * mapKolkata.get(details.value.destcity)!;  
+        this.baseCost = mapKolkata.get(details.value.destcity)!;
+        this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
+        break;  
       default:
         this.tempBill=0; break;
       }
+
   }
 
   onChangeACStatus(details: any){
     if(details.value.ACstatus == "AC"){
       this.ACCost = 100;
-      this.tempBill = this.tempBill + this.ACCost + this.sleeperCost;
     }
     else{
       this.ACCost = 0;
     }
+    this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
   }
 
   onChangeSeats(details: any){
     this.seatsNumber = details.value.seats;
-    this.tempBill = this.baseCost * this.seatsNumber +this.ACCost + this.sleeperCost;
+    this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
   }
 
   onChangeSleeper(details:any){
-    if(details.value.ACstatus == "Sleeper"){
+    if(details.value.sleeperstatus == "Sleeper"){
       this.sleeperCost = 200;
-      this.tempBill = this.baseCost * this.seatsNumber +this.ACCost + this.sleeperCost;
     }
     else{
       this.sleeperCost = 0;
     }
+    this.tempBill = (this.baseCost +this.ACCost + this.sleeperCost )* this.seatsNumber ;
   }
 
 }

@@ -1,6 +1,17 @@
 <div align="center">
     <form #contactForm="ngForm" class="form-inline container w-50" (ngSubmit)="onSubmit(contactForm)">
 
+
+        <!-- <div class="form-group">
+            <span>Source City</span>  
+            <select required (change)="onChangeCity(contactForm)" name="sourcecity" class="form-control" #srcCity='ngModel' ngModel></select>
+            <input required minlength="1" class="form-control" type="number" #empIdRef='ngModel' name="eid" ngModel /> 
+            <div *ngIf='srcCity.errors && srcCity.touched' class="alert alert-danger">
+              <div > Provide Source City </div>
+            </div>
+        </div> -->
+
+
         <label for="sourcecity" class="sr-only">Source City</label>
         <select (change)="onChangeCity(contactForm)" name="sourcecity" class="form-control" ngModel>
             <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
@@ -43,7 +54,7 @@
   
       
       <p id="finalamount" name="finalamount">
-        Bill Amount:        
+        Bill Amount: {{tempBill}}       
       </p><br>
 
   
