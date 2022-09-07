@@ -1,15 +1,143 @@
 <div align="center">
-    <form #contactForm="ngForm" class="form-inline container w-50" (ngSubmit)="onSubmit(contactForm)">
-
-
-        <!-- <div class="form-group">
+    <form #contactForm="ngForm" class="form-inline container col-sm-3" (ngSubmit)="onSubmit(contactForm)">
+        
+        
+        <div class="form-group">
             <span>Source City</span>  
-            <select required (change)="onChangeCity(contactForm)" name="sourcecity" class="form-control" #srcCity='ngModel' ngModel></select>
-            <input required minlength="1" class="form-control" type="number" #empIdRef='ngModel' name="eid" ngModel /> 
+            <select required (change)="onChangeCity(contactForm)" name="sourcecity" class="form-control" #srcCity='ngModel' ngModel>
+                <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
+                    {{c.name}}
+                  </option>
+            </select><br>
             <div *ngIf='srcCity.errors && srcCity.touched' class="alert alert-danger">
               <div > Provide Source City </div>
             </div>
-        </div> -->
+        </div>
+
+        <!-- <label for="sourcecity" class="sr-only">Source City</label>
+        <select (change)="onChangeCity(contactForm)" name="sourcecity" class="form-control" ngModel>
+            <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
+              {{c.name}}
+            </option>
+        </select><br> -->
+
+        <!-- <label for="destcity" class="sr-only">Destination City</label>
+        <select (change)="onChangeCity(contactForm)" name="destcity" class="form-control" ngModel>
+            <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
+              {{c.name}}
+            </option>
+        </select><br> -->
+
+
+        <div class="form-group">
+            <span>Destination City</span>  
+            <select required (change)="onChangeCity(contactForm)" name="destcity" class="form-control" #destCity='ngModel' ngModel>
+                <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
+                    {{c.name}}
+                  </option>
+            </select><br>
+            <div *ngIf='destCity.errors && destCity.touched' class="alert alert-danger">
+              <div > Provide Destination City </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <span>Date of Travel</span>  
+            <input type="date" name="date" id="date" class="form-control" min="2022-09-07" #date="ngModel" ngModel><br>
+            <div *ngIf='date.errors && date.touched' class="alert alert-danger">
+                <div> Provide Date of Travel </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- <label for="time" class="sr-only">Time of Travel</label>
+        <select name="time" class="form-control" ngModel>
+            <option [ngValue]="t" *ngFor="let t of timeList" class="form-control">
+              {{t}}
+            </option>
+        </select><br> -->
+
+
+        <div class="form-group">
+            <span>Time of Travel</span>  
+            <select required name="time" class="form-control" #time='ngModel' ngModel>
+                <option [ngValue]="t" *ngFor="let t of timeList" class="form-control">
+                    {{t}}
+                </option>
+            </select><br>
+            <div *ngIf='time.errors && time.touched' class="alert alert-danger">
+              <div > Select Departure Time </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- <label for="seats">Number of Seats</label>
+        <input (change)="onChangeSeats(contactForm)"  type="number" name="seats" id="seats" class="form-control" min=1 ngModel><br> -->
+
+
+        <div class="form-group">
+            <span>Number of Seats</span>  
+            <input (change)="onChangeSeats(contactForm)"  type="number" value=1 name="seats" id="seats" class="form-control" min=1 #seats='ngModel' ngModel><br>
+            <div *ngIf='seats.errors && seats.touched' class="alert alert-danger">
+              <div > Select Number of Seats </div>
+            </div>
+        </div>
+
+
+
+  
+      <p>
+        <input (change)="onChangeACStatus(contactForm)" class="form-check-input" type="radio" id="AC" value="AC" name="ACstatus" ngModel checked>
+        <label class="form-check-label" for="AC">AC</label><br>
+        <input (change)="onChangeACStatus(contactForm)" class="form-check-input" type="radio" id="nonAC" value="Non AC" name="ACstatus" ngModel>
+        <label class="form-check-label" for="nonAC">Non AC</label><br>
+        <label>Additional fee of Rs.100 will be applied per seat for 'AC' option</label><br>
+
+      </p><br>
+
+      <p>
+        <input (change)="onChangeSleeper(contactForm)" class="form-check-input" type="radio" value="Sleeper"
+         id="sleeper" name="sleeperstatus" ngModel  >
+        <label for="sleeper" class="form-check-label">Sleeper</label><br>
+        <input (change)="onChangeSleeper(contactForm)" class="form-check-input" type="radio" value="Non Sleeper"
+         id="nonsleeper" name="sleeperstatus" ngModel>
+        <label for="nonsleeper" class="form-check-label">Non Sleeper</label>
+        <br><label>Additional fee of Rs.200 will be applied per seat for 'Sleeper' option</label><br>
+      </p><br>
+  
+      
+      <p id="finalamount" name="finalamount">
+        Bill Amount: {{tempBill}}       
+      </p><br>
+
+  
+      <p>
+        <button [disabled]="!contactForm.valid" type="submit" class="btn btn-success">Submit</button>
+      </p>
+  
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div align="center">
+    <form #contactForm="ngForm" class="form-inline container w-50" (ngSubmit)="onSubmit(contactForm)">
 
 
         <label for="sourcecity" class="sr-only">Source City</label>
@@ -63,4 +191,4 @@
       </p>
   
     </form>
-  </div>
+  </div> -->
