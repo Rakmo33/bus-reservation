@@ -1,45 +1,45 @@
-<div class="container d-flex flex-column justify-content-center bg-secondary">
-    <h2 class="m-auto p-2">Welcome, {{username}}!</h2>
-    <h3  class="p-2 m-auto">Here are your bookings!</h3>
+<div class="container d-flex flex-column justify-content-center mb-5">
+    <h2 class="m-auto p-1">Welcome, {{username}}!</h2>
+    <h3  class="p-1 m-auto">Here are your bookings!</h3>
 
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center mt-2">
         <div class="col-sm-6">
-            <table *ngFor="let ticket of validTickets" class="table table-dark ">
+            <table *ngFor="let ticket of validTickets" class="table table-bordered" style="background-color: rgb(200, 198, 198);">
                 <tbody>
                     <tr>
-                        <td>Ticket Id</td>
+                        <th>Ticket Id</th>
                         <td>{{ticket.ticketID}}</td>
                     </tr>
                     <tr>
-                        <td>Source</td>
+                        <th>Source</th>
                         <td>{{ticket.source}}</td>
                     </tr>
                     <tr>
-                        <td>Destination</td>
+                        <th>Destination</th>
                         <td>{{ticket.destination}}</td>
                     </tr>
                     <tr>
-                        <td>AC</td>
+                        <th>AC</th>
                         <td>{{ticket.ACStatus}}</td>
                     </tr>
                     <tr>
-                        <td>Sleeper</td>
+                        <th>Sleeper</th>
                         <td>{{ticket.sleeperStatus}}</td>
                     </tr>
                     <tr>
-                        <td>No. of seats</td>
+                        <th>No. of seats</th>
                         <td>{{ticket.seats}}</td>
                     </tr>
                     <tr>
-                        <td>Date</td>
+                        <th>Date</th>
                         <td>{{ticket.date}}</td>
                     </tr>
                     <tr>
-                        <td>Time</td>
+                        <th>Time</th>
                         <td>{{ticket.time}}</td>
                     </tr>
                     <tr>
-                        <td>Total Cost</td>
+                        <th>Total Cost</th>
                         <td>{{ticket.totalBill}}</td>
                     </tr>
                 </tbody>
