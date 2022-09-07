@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookingPageComponent } from './booking-page/booking-page.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
