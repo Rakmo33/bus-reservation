@@ -13,6 +13,7 @@ export class UserService {
     const userFound:User = users.find((u:any)=>{return u.username==username});
     if(userFound && userFound.password==password){
       localStorage.setItem("currentUser",userFound.username);
+      console.log(localStorage.getItem("currentUser"));
     }else if(!userFound){
       console.log("User not found");
     }else{
