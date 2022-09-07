@@ -7,20 +7,22 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookingPageComponent } from './booking-page/booking-page.component';
 import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent,
+    BookingPageComponent,
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    DashboardComponent,
-    BookingPageComponent,
-    LoginComponent
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

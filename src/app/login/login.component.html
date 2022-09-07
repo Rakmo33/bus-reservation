@@ -4,7 +4,7 @@
 
 <div class="container w-50 mt-5">
 
-    <form [formGroup]="login_form" (ngSubmit)="onSubmitLogin()" class="form-control" id="loginForm">
+    <form  [formGroup]="login_form" (ngSubmit)="onSubmitLogin()" class="form-control" id="loginForm">
 
         <h3>Login Form</h3>
 
@@ -21,7 +21,7 @@
         <div class="form-group mt-2">
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
-        <div style="text-align:right;"><a href="#">New User? Create an account</a></div>
+        <div style="text-align:right;"><a routerLink="/register">New User? Create an account</a></div>
         
     </form>
 
