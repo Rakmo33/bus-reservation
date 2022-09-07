@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UserService } from '../user.service';
+
 
 
 @Component({
@@ -10,30 +12,31 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 login_form:any;
-  constructor() { 
+  constructor(private userService: UserService) { 
     
   }
 
   ngOnInit(): void {
     this.login_form = new FormGroup({
-      email: new FormControl(),
+      username: new FormControl(),
       pass: new FormControl()
     
     })
   }
-onSubmit(){
-  const email=this.login_form.controls.email.value;
+onSubmitLogin(){
+  const username=this.login_form.controls.username.value;
   const pass= this.login_form.controls.pass.value;
-  this.checkCredentials(email,pass);
+  this.userService.checkCredentials(username,pass);
 }
-checkCredentials(email:any,pass:string){
-  if(email=="abc@gmail.com" && pass=="1234"){
-    console.log("Login Successfull")
-  }else{
-    console.log("Login failed")
+// checkCredentials(email:any,pass:string){
+//   // if(email=="abc@gmail.com" && pass=="1234"){
+//   //   // console.log("Login Successfull")
+//   // }else{
+//   //   // console.log("Login failed")
 
-  }
-}
+//   // }
+
+// }
 
 
   
