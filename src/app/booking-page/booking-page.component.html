@@ -1,7 +1,7 @@
-<div align="center">
-    <form #contactForm="ngForm" class="form-inline container col-sm-3" (ngSubmit)="onSubmit(contactForm)">
+<div class="container mt-5 w-50 mb-5">
+    <form #contactForm="ngForm" class="form-control" (ngSubmit)="onSubmit(contactForm)">
         
-        
+        <h3 align="center">Ticket Booking</h3>
         <div class="form-group">
             <span>Source City</span>  
             <select required (change)="onChangeCity(contactForm)" name="sourcecity" class="form-control" #srcCity='ngModel' ngModel>
@@ -93,36 +93,36 @@
 
 
 
-  
+        
       <p>
         <input (change)="onChangeACStatus(contactForm)" class="form-check-input" type="radio" id="AC" value="AC" name="ACstatus"
         [(ngModel)]="ACStatus" >
-        <label class="form-check-label" for="AC">AC</label><br>
+        <label class="form-check-label" for="AC" style="margin-right:10px;">AC</label>
         <input (change)="onChangeACStatus(contactForm)" class="form-check-input" type="radio" id="nonAC" value="Non AC" name="ACstatus" 
         [(ngModel)]="ACStatus" >
         <label class="form-check-label" for="nonAC">Non AC</label><br>
         <label>Additional fee of Rs.100 will be applied per seat for 'AC' option</label><br>
 
-      </p><br>
+      </p>
 
       <p>
         <input (change)="onChangeSleeper(contactForm)" class="form-check-input" type="radio" value="Sleeper"
          id="sleeper" name="sleeperstatus" [(ngModel)]="sleeperStatus"  >
-        <label for="sleeper" class="form-check-label">Sleeper</label><br>
+        <label for="sleeper" class="form-check-label" style="margin-right:10px;">Sleeper</label> 
         <input (change)="onChangeSleeper(contactForm)" class="form-check-input" type="radio" value="Non Sleeper"
          id="nonsleeper" name="sleeperstatus" [(ngModel)]="sleeperStatus">
         <label for="nonsleeper" class="form-check-label">Non Sleeper</label>
-        <br><label>Additional fee of Rs.200 will be applied per seat for 'Sleeper' option</label><br>
-      </p><br>
+        <br><label>Additional fee of Rs.200 will be applied per seat for 'Sleeper' option</label>
+      </p>
   
-      
-      <p id="finalamount" name="finalamount">
-        Bill Amount: {{tempBill}}       
-      </p><br>
+
+      <p id="finalamount" name="finalamount" style="font-size:25px; color: red;">
+        Bill Amount: {{tempBill | currency: "INR": "symbol"}}      
+      </p>
 
   
       <p>
-        <button [disabled]="!contactForm.valid" type="submit" class="btn btn-success">Submit</button>
+        <button [disabled]="!contactForm.valid" type="submit" class="btn btn-primary">Submit</button>
       </p>
   
     </form>
