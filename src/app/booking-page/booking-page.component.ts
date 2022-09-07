@@ -165,6 +165,7 @@ export class BookingPageComponent implements OnInit {
   }
 
   onChangeSleeper(details:any){
+    console.log(details.value.sleeperstatus)
     if(details.value.sleeperstatus == "Sleeper"){
       this.sleeperCost = 200;
     }
