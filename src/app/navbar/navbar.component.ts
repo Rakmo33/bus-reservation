@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  currentUser: string= localStorage.getItem("currentUser") || "";
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
   }
+
+  logOut(){
+    alert("Logout");
+    localStorage.setItem("currentUser","");
+    this.userService.logOutUser();
+    
+  }
+
+  
 
 }
