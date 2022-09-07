@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class UserService {
   checkCredentials(username:any,password:any){
     const users = JSON.parse(localStorage.getItem("users")||"[]");
     // console.log(users);
-    const userFound = users.find((u:any)=>{return u.username==username});
+    const userFound:User = users.find((u:any)=>{return u.username==username});
     if(userFound && userFound.password==password){
       localStorage.setItem("currentUser",userFound.username);
     }else if(!userFound){
