@@ -8,7 +8,7 @@
                 <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
                     {{c.name}}
                   </option>
-            </select><br>
+            </select>
             <div *ngIf='srcCity.errors && srcCity.touched' class="alert alert-danger">
               <div > Provide Source City </div>
             </div>
@@ -30,12 +30,12 @@
 
 
         <div class="form-group">
-            <span>Destination City</span>  
+            <br><span>Destination City</span>  
             <select required (change)="onChangeCity(contactForm)" name="destcity" class="form-control" #destCity='ngModel' ngModel>
                 <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
                     {{c.name}}
                   </option>
-            </select><br>
+            </select>
             <div *ngIf='destCity.errors && destCity.touched' class="alert alert-danger">
               <div > Provide Destination City </div>
             </div>
@@ -44,7 +44,7 @@
 
 
         <div class="form-group">
-            <span>Date of Travel</span>  
+            <br><span>Date of Travel</span>  
             <input type="date" name="date" id="date" class="form-control" min="2022-09-07" #date="ngModel" ngModel><br>
             <div *ngIf='date.errors && date.touched' class="alert alert-danger">
                 <div> Provide Date of Travel </div>
@@ -84,7 +84,8 @@
 
         <div class="form-group">
             <span>Number of Seats</span>  
-            <input (change)="onChangeSeats(contactForm)"  type="number" value=1 name="seats" id="seats" class="form-control" min=1 #seats='ngModel' ngModel><br>
+            <input (change)="onChangeSeats(contactForm)"  type="number" value=1 name="seats" id="seats" class="form-control" min=1 #seats='ngModel' 
+            [(ngModel)]="numSeats" ><br>
             <div *ngIf='seats.errors && seats.touched' class="alert alert-danger">
               <div > Select Number of Seats </div>
             </div>
@@ -94,9 +95,11 @@
 
   
       <p>
-        <input (change)="onChangeACStatus(contactForm)" class="form-check-input" type="radio" id="AC" value="AC" name="ACstatus" ngModel checked>
+        <input (change)="onChangeACStatus(contactForm)" class="form-check-input" type="radio" id="AC" value="AC" name="ACstatus"
+        [(ngModel)]="ACStatus" >
         <label class="form-check-label" for="AC">AC</label><br>
-        <input (change)="onChangeACStatus(contactForm)" class="form-check-input" type="radio" id="nonAC" value="Non AC" name="ACstatus" ngModel>
+        <input (change)="onChangeACStatus(contactForm)" class="form-check-input" type="radio" id="nonAC" value="Non AC" name="ACstatus" 
+        [(ngModel)]="ACStatus" >
         <label class="form-check-label" for="nonAC">Non AC</label><br>
         <label>Additional fee of Rs.100 will be applied per seat for 'AC' option</label><br>
 
@@ -104,10 +107,10 @@
 
       <p>
         <input (change)="onChangeSleeper(contactForm)" class="form-check-input" type="radio" value="Sleeper"
-         id="sleeper" name="sleeperstatus" ngModel  >
+         id="sleeper" name="sleeperstatus" [(ngModel)]="sleeperStatus"  >
         <label for="sleeper" class="form-check-label">Sleeper</label><br>
         <input (change)="onChangeSleeper(contactForm)" class="form-check-input" type="radio" value="Non Sleeper"
-         id="nonsleeper" name="sleeperstatus" ngModel>
+         id="nonsleeper" name="sleeperstatus" [(ngModel)]="sleeperStatus">
         <label for="nonsleeper" class="form-check-label">Non Sleeper</label>
         <br><label>Additional fee of Rs.200 will be applied per seat for 'Sleeper' option</label><br>
       </p><br>
