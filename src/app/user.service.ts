@@ -20,4 +20,8 @@ export class UserService {
       console.log("login Failed");
     }
   }
+
+  registerUser(fname:any,lname:any,username:any,email:any,password:any){
+    localStorage.setItem("users",JSON.stringify([{fname: fname,lname: lname, username: username, email: email,password:password}]));
+  }
 }
