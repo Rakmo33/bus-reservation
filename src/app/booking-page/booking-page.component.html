@@ -1,0 +1,66 @@
+<div align="center">
+    <form #contactForm="ngForm" class="form-inline container w-50" (ngSubmit)="onSubmit(contactForm)">
+
+
+        <!-- <div class="form-group">
+            <span>Source City</span>  
+            <select required (change)="onChangeCity(contactForm)" name="sourcecity" class="form-control" #srcCity='ngModel' ngModel></select>
+            <input required minlength="1" class="form-control" type="number" #empIdRef='ngModel' name="eid" ngModel /> 
+            <div *ngIf='srcCity.errors && srcCity.touched' class="alert alert-danger">
+              <div > Provide Source City </div>
+            </div>
+        </div> -->
+
+
+        <label for="sourcecity" class="sr-only">Source City</label>
+        <select (change)="onChangeCity(contactForm)" name="sourcecity" class="form-control" ngModel>
+            <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
+              {{c.name}}
+            </option>
+        </select><br>
+
+        <label for="destcity" class="sr-only">Destination City</label>
+        <select (change)="onChangeCity(contactForm)" name="destcity" class="form-control" ngModel>
+            <option [ngValue]="c.name" *ngFor="let c of cityList" class="form-control">
+              {{c.name}}
+            </option>
+        </select><br>
+
+        <label for="date">Date of Travel</label>
+        <input type="date" name="date" id="date" class="form-control" min="2022-09-06" ngModel><br>
+
+        <label for="time" class="sr-only">Time of Travel</label>
+        <select name="time" class="form-control" ngModel>
+            <option [ngValue]="t" *ngFor="let t of timeList" class="form-control">
+              {{t}}
+            </option>
+        </select><br>
+
+
+        <label for="seats">Number of Seats</label>
+        <input (change)="onChangeSeats(contactForm)"  type="number" name="seats" id="seats" class="form-control" min=1 ngModel><br>
+  
+      <p>
+        <input (change)="onChangeACStatus(contactForm)" type="radio" value="AC" name="ACstatus" checked="checked" ngModel> AC
+        <input (change)="onChangeACStatus(contactForm)" type="radio" value="Non AC" name="ACstatus" ngModel> Non AC
+      </p>
+
+      <p>
+        <label for="sleeper" class="radio-inline">Sleeper</label>
+        <input (change)="onChangeSleeper(contactForm)" type="radio" value="Sleeper" id="sleeper" name="sleeperstatus" checked ngModel>
+        <label for="nonsleeper" class="radio-inline">Non Sleeper</label>
+        <input (change)="onChangeSleeper(contactForm)" type="radio" value="Non Sleeper" id="nonsleeper" name="sleeperstatus" ngModel>
+      </p>
+  
+      
+      <p id="finalamount" name="finalamount">
+        Bill Amount: {{tempBill}}       
+      </p><br>
+
+  
+      <p>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </p>
+  
+    </form>
+  </div>
