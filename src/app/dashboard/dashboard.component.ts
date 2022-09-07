@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  username:string = "Omkar";
+  
+
+  username:string = localStorage.getItem('currentUser') || "";
   ticketId:string = "XXXXXX";
   source:string = "Pune";
   destination:string = "Mumbai";

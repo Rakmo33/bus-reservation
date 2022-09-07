@@ -48,6 +48,7 @@ export class BookingPageComponent implements OnInit {
     var finalAmount = this.tempBill;//this.calculateBill(contactForm1);
 
     var newTicket: any = {
+      "username": localStorage.getItem("currentUser"),
       "ticketID": ticketID,
       "source": contactForm1.value.sourcecity,
       "destination": contactForm1.value.destcity,
@@ -60,7 +61,9 @@ export class BookingPageComponent implements OnInit {
     };
 
     
-    localStorage.setItem("newTicket", JSON.stringify(newTicket));
+    let tickets:any[] = JSON.parse(localStorage.getItem("tickets")|| "[]");
+    tickets.push(newTicket);
+    localStorage.setItem("tickets", JSON.stringify(tickets));
     alert("Ticket booked successfully "+ finalAmount);
   }
 
