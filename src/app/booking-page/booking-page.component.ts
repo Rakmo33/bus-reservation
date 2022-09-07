@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 var mapPune = new Map<string, number>([["Mumbai", 100], ["Nagpur", 200], ["Kolkata", 300], ["Bengaluru", 400]]);
 var mapMumbai = new Map<string, number>([["Pune", 100], ["Nagpur", 250], ["Kolkata", 400], ["Bengaluru", 500]]);
@@ -23,7 +24,7 @@ export class BookingPageComponent implements OnInit {
   ACStatus:string;
   numSeats: number;
 
-  constructor() {
+  constructor(private router: Router) {
     this.tempBill = 0;
     this.seatsNumber = 1;
     this.baseCost = 0;
@@ -71,6 +72,7 @@ export class BookingPageComponent implements OnInit {
     tickets.push(newTicket);
     localStorage.setItem("tickets", JSON.stringify(tickets));
     alert("Ticket booked successfully "+ finalAmount);
+    this.router.navigate(["dashboard"]);
   }
 
   calculateBill(details: any){

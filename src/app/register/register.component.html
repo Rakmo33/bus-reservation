@@ -1,8 +1,11 @@
 <div>
-    <h1 class="p-1"><b>BUS RESERVATION SYSTEM</b></h1>
+    <h1 class="p-1 text-primary"><i><b>Bus Reservation</b></i></h1>
 </div>
-    
-    <form [formGroup]="register_form" (ngSubmit)="onSubmitRegister()" class="form-control container w-50 mt-5">
+<div class="container mb-5 mt-5 w-50">
+    <form [formGroup]="register_form" (ngSubmit)="onSubmitRegister()" class="form-control container">
+
+        <h3>Register Form</h3>
+
         <div class="form-group">
             <label for="fname" class="form-label">First name:</label><br>
             <input class="form-control" type="text" id="fname" name="fname" formControlName="fname">
@@ -27,8 +30,9 @@
             <label for="repassword" class="form-label">Retype Password:</label><br>
             <input  class="form-control" type="text" id="repassword" name="repassword" formControlName="repassword">
         </div><br>
-        <input  class="form-control btn btn-primary"  type="submit" value="Sign Up">
+        <input class=" btn btn-primary"  type="submit" value="Sign Up">
         <div style="text-align:right;"><a routerLink="/login">Already User? Login</a></div>
 
 
     </form>
+    </div>
