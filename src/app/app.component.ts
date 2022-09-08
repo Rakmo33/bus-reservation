@@ -13,7 +13,19 @@ export class AppComponent {
   }
 
   checkCurrentUser(){
-    return localStorage.getItem("currentUser")!="";
+    if(localStorage.getItem("currentUser") && localStorage.getItem("currentUser")!=""){
+      return true;
+    }
+    return false;
+  }
+
+  checkUrl(){
+   if(location.pathname=="/register" || location.pathname == "/login" || location.pathname == "/"){
+    localStorage.setItem("currentUser","")
+    return false;
+   };
+   return true;
+   
   }
 
 }

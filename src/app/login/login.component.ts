@@ -16,17 +16,27 @@ login_form:any;
     
   }
 
+  
+
   ngOnInit(): void {
     this.login_form = new FormGroup({
       username: new FormControl(),
       pass: new FormControl()
     
-    })
+    });
+
   }
 onSubmitLogin(){
   const username=this.login_form.controls.username.value;
   const pass= this.login_form.controls.pass.value;
-  this.userService.checkCredentials(username,pass);
+  if(username==""){
+    return alert("Username cannot be empty");
+  }
+  else if(pass==null || pass==""){
+    return alert("Password cannot be empty");
+  }else{
+    this.userService.checkCredentials(username,pass);
+  }
 }
 // checkCredentials(email:any,pass:string){
 //   // if(email=="abc@gmail.com" && pass=="1234"){

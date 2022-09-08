@@ -8,27 +8,27 @@
 
         <div class="form-group">
             <label for="fname" class="form-label">First name:</label><br>
-            <input class="form-control" type="text" id="fname" name="fname" formControlName="fname">
+            <input class="form-control" type="text" id="fname" name="fname" formControlName="fname" required>
         </div><br>
         <div class="form-group"> 
             <label for="lname" class="form-label">Last name:</label><br>
-            <input  class="form-control" type="text" id="lname" name="lname" formControlName="lname">
+            <input  class="form-control" type="text" id="lname" name="lname" formControlName="lname" required>
         </div><br>
         <div  class="form-group"> 
             <label for="username" class="form-label">User name:</label><br>
-            <input  class="form-control" type="text" id="username" name="username" formControlName="username">
+            <input  class="form-control" type="text" id="username" name="username" formControlName="username" required>
         </div><br>
         <div class="form-group"> 
             <label for="email" class="form-label">Email:</label><br>
-            <input  class="form-control"  type="text" id="email" name="email" formControlName="email">
+            <input  class="form-control"  type="email" id="email" name="email" formControlName="email" required>
         </div><br>
         <div class="form-group">
             <label for="password" class="form-label">Password:</label><br>
-            <input  class="form-control" type="text" id="password" name="password" formControlName="password">
+            <input  class="form-control" type="password" id="password" name="password" formControlName="password" required>
         </div><br>
         <div class="form-group"> 
             <label for="repassword" class="form-label">Retype Password:</label><br>
-            <input  class="form-control" type="text" id="repassword" name="repassword" formControlName="repassword">
+            <input  class="form-control" type="password" id="repassword" name="repassword" formControlName="repassword" required>
         </div><br>
         <input class=" btn btn-primary"  type="submit" value="Sign Up">
         <div style="text-align:right;"><a routerLink="/login">Already User? Login</a></div>
